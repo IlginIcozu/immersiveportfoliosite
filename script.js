@@ -189,6 +189,7 @@ const portfolioData = {
 }
   ],
   creativeCoding: [
+
 {
   title: "Dissonant Oscillations",
   kicker: "Creative coding",
@@ -241,6 +242,39 @@ bodyHtml: `
       { src: "assets/placeholders/udne-01.jpg", alt: "Gallery placeholder 5" }
     ]
   }
+},{
+  title: "DeformedDiff",
+  kicker: "Creative coding",
+ media: {
+  type: "iframe-src",
+  src: "https://ipfs.io/ipfs/QmeuY1wsVt5DzNVxBBQazqvJGwjhw6e4RkqLZtWq393d17/",
+  title: "GenerativeProject",
+  contained: true,
+  mediaClass: "project-media-small",
+  frameClass: "project-media-frame-square"
+},
+bodyHtml: `
+  <h4>Description</h4>
+  <p><em>DeformedDiff</em> is a curated collection of six interactive generative artworks that explores the relationship between order and chaos within complex systems. Each piece employs a web-based reaction-diffusion algorithm that has been intentionally deformed to produce continuously evolving patterns.</p>
+  <p>Generated in real time within a WebGL environment, the works emphasize the interplay of color, motion, and texture. Every iteration in the collection introduces distinct variations through altered color palettes, modified algorithmic parameters, and different kinetic behaviors.</p>
+  <p>Through feedback loops, each composition evolves continuously, producing generative patterns that never fully repeat themselves.</p>
+  <h4>Interactivity</h4>
+  <p>Zoom: Use your mouse’s scroll wheel to dynamically zoom in and out, influencing the direction of the feedback loop based on your mouse position.</p>
+  <p>Freeze Zoom: Click once at any desired moment to lock the current zoom level. The zooming will stop, while the underlying generative animation continues to flow indefinitely.</p>
+  <h4>Info</h4>
+  <p>Type: Interactive Generative Artwork<br>Tools: p5.js &amp; WebGL</p>
+`
+},
+{
+  title: "",
+  media: {
+    type: "iframe-src",
+    src: "https://ipfs.io/ipfs/QmatX7h1qh8t7VXvkRtc2FouMR8HsnhtpdYqwY32pDhvdn/",
+    title: "GenerativeProject"
+  },
+  bodyHtml: `
+    <h4><strong>Click to generate a new iteration</strong></h4>
+  `
 }
   ]
 };
@@ -392,23 +426,22 @@ function renderMedia(media, title) {
     `;
   }
 
-  if (media.type === "iframe-src") {
-    return `
-      <div class="project-media">
-        <div class="project-media-frame">
-          <iframe
-            src="${media.src}"
-            title="${escapeHtml(media.title || title)}"
-            loading="lazy"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        </div>
+ if (media.type === "iframe-src") {
+  return `
+    <div class="project-media ${media.contained ? "project-media-contained" : ""} ${media.mediaClass || ""}">
+      <div class="project-media-frame ${media.frameClass || ""}">
+        <iframe
+          src="${media.src}"
+          title="${escapeHtml(media.title || title)}"
+          loading="lazy"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
-    `;
-  }
-
+    </div>
+  `;
+}
   if (media.type === "gallery") {
     const galleryId = `gallery-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     return `

@@ -210,7 +210,7 @@ bodyHtml: `
 `
 },
 {
-  title: "Udnē",
+  title: "Udnē, Art Basel Miami Beach 2022",
   kicker: "Creative coding",
   media: {
     type: "iframe-src",
@@ -294,6 +294,65 @@ const creativeCodingExtraGallery = [
       ]
     },
     bodyHtml: ``
+  }
+];
+
+const releaseMusicData = [
+  {
+    title: "Anatore",
+    url: "https://ilginicozu.bandcamp.com/album/anatore",
+    cover: "https://f4.bcbits.com/img/a1692139937_10.jpg",
+    format: "Digital Album",
+    release: "Released January 7, 2024",
+    note: "Indigenous Breakcore",
+    tracks: "3 tracks",
+    tags: ["drum & bass", "experimental", "electro-acoustic"]
+  },
+  {
+    title: "Sonic.xp",
+    url: "https://ilginicozu.bandcamp.com/album/sonic-xp",
+    cover: "https://f4.bcbits.com/img/a1612421744_10.jpg",
+    format: "Digital Album",
+    release: "Released July 13, 2023",
+    tracks: "2 tracks",
+    tags: ["experimental", "acousmatic", "electro-acoustic"]
+  },
+  {
+    title: "Cardenias",
+    url: "https://ilginicozu.bandcamp.com/album/cardenias",
+    cover: "https://f4.bcbits.com/img/a2798357965_10.jpg",
+    format: "Digital Album",
+    release: "Released November 23, 2022",
+    tracks: "3 tracks",
+    note: "Composed for and premiered in an octaphonic setting, these pieces explore timbres hidden within mundane materials and instruments performed with extended techniques.",
+    tags: ["experimental", "acousmatic", "musique concrete"]
+  },
+  {
+    title: "Uzlaşma: Music for a Theater Play",
+    url: "https://ilginicozu.bandcamp.com/track/uzla-ma-music-for-a-theater-play",
+    cover: "https://f4.bcbits.com/img/a3132380601_10.jpg",
+    format: "Digital Track",
+    release: "Released October 16s, 2021",
+    tracks: "Single track",
+    tags: ["acoustic", "electro-acoustic", "theater music"]
+  },
+  {
+    title: "Variations",
+    url: "https://ilginicozu.bandcamp.com/track/variations",
+    cover: "https://f4.bcbits.com/img/a3523661742_10.jpg",
+    format: "Digital Track",
+    release: "Released September 7, 2021",
+    tracks: "Single track",
+    tags: ["experimental", "acoustic", "piano solo"]
+  },
+  {
+    title: "Anatolian Sellers - Movement I // Performed by Hezarfen Ensemble",
+    url: "https://ilginicozu.bandcamp.com/track/anatolian-sellers-movement-i-performed-by-hezarfen-ensemble",
+    cover: "https://f4.bcbits.com/img/a3285185093_10.jpg",
+    format: "Digital Track",
+    release: "Released April 9, 2021",
+    tracks: "Single track",
+    tags: ["experimental", "acousmatic", "electro-acoustic"]
   }
 ];
 
@@ -402,6 +461,33 @@ function renderProject(project) {
   `;
 }
 
+function renderReleaseCard(release) {
+  return `
+    <a class="release-card" href="${release.url}" target="_blank" rel="noopener noreferrer">
+      <div class="release-cover">
+        <img src="${release.cover}" alt="${escapeHtml(release.title)} cover" loading="lazy" />
+      </div>
+      <div class="release-card-body">
+        <p class="release-format">${escapeHtml(release.format)}</p>
+        <h3 class="release-card-title">${escapeHtml(release.title)}</h3>
+        <p class="release-meta">${escapeHtml(release.release)} · ${escapeHtml(release.tracks)}</p>
+        ${release.note ? `<p class="release-note">${escapeHtml(release.note)}</p>` : ""}
+        ${release.tags?.length ? `
+          <div class="release-tags">
+            ${release.tags.map(tag => `<span class="release-tag">${escapeHtml(tag)}</span>`).join("")}
+          </div>
+        ` : ""}
+      </div>
+    </a>
+  `;
+}
+
+function mountReleaseMusic(targetId, items) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  target.innerHTML = items.map(renderReleaseCard).join("");
+}
+
 function mountProjects(targetId, items) {
   const target = document.getElementById(targetId);
   if (!target) return;
@@ -498,6 +584,7 @@ mountProjects('immersive-sound-list', portfolioData.immersiveSound);
 mountProjects('immersive-experience-list', portfolioData.immersiveExperience);
 mountProjects('creative-coding-list', portfolioData.creativeCoding);
 mountProjects('creative-coding-extra-gallery', creativeCodingExtraGallery);
+mountReleaseMusic('release-music-list', releaseMusicData);
 initActiveNav();
 initGalleries();
 

@@ -314,7 +314,7 @@ const creativeCodingExtraGallery = [
         { src: "assets/placeholders/a (26).jpg", alt: "Gallery image 30" },
         { src: "assets/placeholders/a (27).jpg", alt: "Gallery image 31" },
         { src: "assets/placeholders/a (28).jpg", alt: "Gallery image 32" },
-        { src: "assets/placeholders/a (28).jpg", alt: "Gallery image 33" },
+        { src: "assets/placeholders/a (29).jpg", alt: "Gallery image 33" },
         { src: "assets/placeholders/a (30).jpg", alt: "Gallery image 34" },
         { src: "assets/placeholders/a (31).jpg", alt: "Gallery image 35" },
         { src: "assets/placeholders/a (32).jpg", alt: "Gallery image 36" },
@@ -323,8 +323,7 @@ const creativeCodingExtraGallery = [
         { src: "assets/placeholders/a (35).jpg", alt: "Gallery image 39" },
         { src: "assets/placeholders/a (36).jpg", alt: "Gallery image 40" },
         { src: "assets/placeholders/a (37).jpg", alt: "Gallery image 41" },
-        { src: "assets/placeholders/a (38).jpg", alt: "Gallery image 42" },
-        { src: "assets/placeholders/a (39).jpg", alt: "Gallery image 43" },
+        { src: "assets/placeholders/a (38).jpg", alt: "Gallery image 42" }
       ]
     },
     bodyHtml: ``

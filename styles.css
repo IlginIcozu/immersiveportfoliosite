@@ -863,3 +863,18 @@ li {
   }
 }
 
+.intro-statement {
+  padding-top: clamp(8rem, 4vw, 8rem);
+  padding-bottom: clamp(1rem, 5vw, 1rem);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.intro-statement p {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: var(--fg);
+}
